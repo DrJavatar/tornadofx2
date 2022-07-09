@@ -625,14 +625,13 @@ class DataGridSkin<T>(control: DataGrid<T>) : VirtualContainerBase<DataGrid<T>, 
     private val weakGridViewItemsListener = WeakListChangeListener(gridViewItemsListener)
 
     init {
-        updateItems()
-
         virtualFlow.id = "virtual-flow"
         virtualFlow.isPannable = false
         virtualFlow.isFocusTraversable = false
         virtualFlow.setCellFactory { createCell() }
         children.add(virtualFlow)
 
+        updateItems()
         updateItemCount()
 
         registerChangeListener(control.itemsProperty) { updateItems() }
